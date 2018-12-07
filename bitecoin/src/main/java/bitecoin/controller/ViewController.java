@@ -2,15 +2,13 @@ package bitecoin.controller;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitecoin.model.Quote;
 import bitecoin.process.QuoteProcess;
 import bitecoin.process.QuoteProcessImpl;
 
-@Controller
+//@Controller
 public class ViewController {
 
 	private QuoteProcess quoteProcess;
@@ -19,7 +17,7 @@ public class ViewController {
 		this.quoteProcess = new QuoteProcessImpl();
 	}
 
-	@RequestMapping("/")
+	// @RequestMapping("/")
 	public String helloWorld(Model model) {
 		model.addAttribute("date", new Date());
 		model.addAttribute("name", "Mike");
