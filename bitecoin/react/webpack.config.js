@@ -1,12 +1,12 @@
 var path = require("path");
 
 module.exports = {
-  entry: "./src/App.js",
+  entry: "./src/index.js",
   devtool: "sourcemaps",
   cache: true,
   mode: "development",
   output: {
-    path: path.join(__dirname, "/build"),
+    path: path.join(__dirname, "../src/main/resources/static"),
     filename: "bundle.js"
   },
   module: {
