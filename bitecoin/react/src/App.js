@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import PriceBox from "./components/PriceBox";
 import "./App.css";
 
 class App extends Component {
+  state = { currentprice: 3000.0, currency: "USD" };
   render() {
+    const { currentprice, currency } = this.state;
     return (
-      <div>
-        <h1>Something from react code</h1>
-      </div>
+      <React.Fragment>
+        <PriceBox price={currentprice} currency={currency} />
+      </React.Fragment>
     );
   }
 }
