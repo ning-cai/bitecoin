@@ -2,6 +2,7 @@ package bitecoin.controller;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,20 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import bitecoin.model.Price;
 import bitecoin.model.Quote;
 import bitecoin.process.BiteCoinProcess;
-import bitecoin.process.BiteCoinProcessImpl;
 import bitecoin.process.QuoteProcess;
-import bitecoin.process.QuoteProcessImpl;
 
 @Controller
 public class BiteCoinController {
 
+	@Autowired
 	private QuoteProcess quoteProcess;
+	@Autowired
 	private BiteCoinProcess biteCoinProcess;
-
-	public BiteCoinController() {
-		quoteProcess = new QuoteProcessImpl();
-		biteCoinProcess = new BiteCoinProcessImpl();
-	}
 
 	@RequestMapping("/")
 	public String helloWorld(Model model) {
