@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitecoin.model.Price;
@@ -13,12 +14,19 @@ import bitecoin.process.BiteCoinProcess;
 import bitecoin.process.QuoteProcess;
 
 @Controller
+@RequestMapping("/bitecoin")
 public class BiteCoinController {
 
 	@Autowired
 	private QuoteProcess quoteProcess;
 	@Autowired
 	private BiteCoinProcess biteCoinProcess;
+
+	@GetMapping("/price")
+	public Price updatePrice(Model model) {
+		Price spotPrice = biteCoinProcess.getSpotPrice();
+		return spotPrice;
+	}
 
 	@RequestMapping("/")
 	public String helloWorld(Model model) {
