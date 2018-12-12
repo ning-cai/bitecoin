@@ -5,7 +5,16 @@ import "./App.css";
 class App extends Component {
   state = { isLoaded: false, amount: 3000.0, currency: "USD" };
 
-  componentDidMount() {
+  componentDidMount = () => {
+    this.updatePrice();
+    this.timer = setInterval(this.updatePrice, 10000);
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.timer);
+  };
+
+  updatePrice = () =>
     fetch("http://localhost:8080/price")
       .then(response => response.json())
       .then(
@@ -21,7 +30,6 @@ class App extends Component {
           this.setState({ isloaded: true, error });
         }
       );
-  }
 
   render() {
     const { amount, currency } = this.state;
