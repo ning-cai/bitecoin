@@ -3,7 +3,7 @@ import PriceBox from "./components/PriceBox";
 import "./App.css";
 
 class App extends Component {
-  state = { isLoaded: false, currentprice: 3000.0, currency: "USD" };
+  state = { isLoaded: false, amount: 3000.0, currency: "USD" };
 
   componentDidMount() {
     fetch("http://localhost:8080/price")
@@ -13,7 +13,7 @@ class App extends Component {
           console.log("response:", result);
           this.setState({
             isLoaded: true,
-            currentprice: result.currentprice,
+            amount: result.amount,
             currency: result.currency
           });
         },
@@ -24,10 +24,10 @@ class App extends Component {
   }
 
   render() {
-    const { currentprice, currency } = this.state;
+    const { amount, currency } = this.state;
     return (
       <React.Fragment>
-        <PriceBox price={currentprice} currency={currency} />
+        <PriceBox amount={amount} currency={currency} />
       </React.Fragment>
     );
   }
