@@ -22,10 +22,10 @@ class App extends Component {
       .then(
         result => {
           console.log("getOriginalPrice:", result);
-          this.originalAmount = result.amount;
+          this.originalAmount = parseFloat(result.amount);
           this.setState({
             isLoaded: true,
-            amount: result.amount,
+            amount: this.originalAmount,
             currency: result.currency
           });
         },
@@ -42,7 +42,7 @@ class App extends Component {
           console.log("response:", result);
           this.setState({
             isLoaded: true,
-            amount: result.amount,
+            amount: parseFloat(result.amount),
             currency: result.currency
           });
         },

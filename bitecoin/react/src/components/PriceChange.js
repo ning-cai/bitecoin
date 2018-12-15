@@ -4,6 +4,11 @@ const PriceChange = props => {
   const { originalAmount, amount, currency } = props;
   const priceChanged = amount - originalAmount !== 0;
   const priceUp = amount - originalAmount > 0;
+  const changedAmount = (amount * 100 - originalAmount * 100) / 100;
+  const changedPercentage = (
+    ((changedAmount * 100) / (originalAmount * 100)) *
+    100
+  ).toFixed(2);
 
   return (
     <React.Fragment>
@@ -16,10 +21,7 @@ const PriceChange = props => {
             : "badge badge-light"
         }
       >
-        {`${amount - originalAmount} ${currency}   ${((amount -
-          originalAmount) /
-          originalAmount) *
-          100}%`}
+        {`${changedAmount}${currency}   ${changedPercentage}%`}
       </span>
     </React.Fragment>
   );
