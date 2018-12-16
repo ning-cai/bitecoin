@@ -54,14 +54,18 @@ class App extends Component {
   render() {
     const { amount, currency } = this.state;
     return (
-      <React.Fragment>
-        <PriceBox amount={amount} currency={currency} />
-        <PriceChange
-          originalAmount={this.originalAmount}
-          amount={amount}
-          currency={currency}
-        />
-      </React.Fragment>
+      <div className="row">
+        <div className="col-lg-6">
+          <PriceBox amount={amount} currency={currency} />
+        </div>
+        <div className="col-lg-6">
+          <PriceChange
+            originalAmount={this.originalAmount}
+            amount={amount}
+            currency={currency}
+          />
+        </div>
+      </div>
     );
   }
 }

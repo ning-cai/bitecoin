@@ -12,17 +12,17 @@ const PriceChange = props => {
 
   return (
     <React.Fragment>
-      <span
+      <h1
         className={
           priceChanged
             ? priceUp
-              ? "badge badge-success"
-              : "badge badge-danger"
-            : "badge badge-light"
+              ? "display-4 badge-success"
+              : "display-4 badge badge-danger"
+            : "display-4 badge-light"
         }
       >
-        {`${changedAmount}${currency}   ${changedPercentage}%`}
-      </span>
+        {`${changedAmount} ${currency}    ${changedPercentage}%`}
+      </h1>
     </React.Fragment>
   );
 };
