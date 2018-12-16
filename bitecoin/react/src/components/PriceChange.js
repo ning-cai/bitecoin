@@ -17,7 +17,7 @@ const PriceChange = props => {
           priceChanged
             ? priceUp
               ? "display-4 badge-success"
-              : "display-4 badge badge-danger"
+              : "display-4 badge-danger"
             : "display-4 badge-light"
         }
       >
