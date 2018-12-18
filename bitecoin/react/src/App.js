@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import PriceBox from "./components/PriceBox";
 import PriceChange from "./components/PriceChange";
+import SecondLayerInfo from "./components/SecondLayerInfo";
 import "./App.css";
 
 class App extends Component {
   originalAmount = 0;
-  state = { isLoaded: false, amount: 3000.0, currency: "USD" };
+  state = {
+    isLoaded: false,
+    amount: 3000.0,
+    currency: "USD",
+    expandSecondLayer: false
+  };
 
   componentDidMount = () => {
     this.getOriginalPrice();
@@ -51,21 +57,28 @@ class App extends Component {
         }
       );
 
+  handleFirstLayerInfoClick = () => {
+    this.setState({ expandSecondLayer: !this.state.expandSecondLayer });
+  };
+
   render() {
-    const { amount, currency } = this.state;
+    const { amount, currency, expandSecondLayer } = this.state;
     return (
-      <div className="row">
-        <div className="col-lg-6">
-          <PriceBox amount={amount} currency={currency} />
+      <React.Fragment>
+        <div className="row" onClick={this.handleFirstLayerInfoClick}>
+          <div className="col-lg-6">
+            <PriceBox amount={amount} currency={currency} />
+          </div>
+          <div className="col-lg-6">
+            <PriceChange
+              originalAmount={this.originalAmount}
+              amount={amount}
+              currency={currency}
+            />
+          </div>
         </div>
-        <div className="col-lg-6">
-          <PriceChange
-            originalAmount={this.originalAmount}
-            amount={amount}
-            currency={currency}
-          />
-        </div>
-      </div>
+        {expandSecondLayer && <SecondLayerInfo />}
+      </React.Fragment>
     );
   }
 }
